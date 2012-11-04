@@ -1,0 +1,96 @@
+{
+    "ss": {
+        "name": "SimplyShorts",
+        "online": true,
+        "offlineMessage": "Houston, we have a problem.",
+        "header": true,
+        "navigation": true,
+        "maxBlocks": 120,
+        "displayName": "Evan Robert",
+        "generalLogin": "admin",
+        "generalPass": "password",
+
+        "db": {
+            "host": "localhost",
+            "base": "simplyshorts",
+            "user": "root",
+            "password": "root",
+            "prefix": ""
+        },
+
+        "url": {
+            "basedir": "/",
+            "urlRewriting": false,
+            "separator": "!"
+        },
+        "style": {
+            "font": {
+                "color": [
+                    248,
+                    248,
+                    248
+                ],
+                "defaultSans": "QuaverSans",
+                "defaultSerif": "QuaverSerif",
+                "defaultStyle": "sans",
+                "defaultSize": 20
+            },
+            "backgroundColor": [
+                20,
+                20,
+                20
+            ],
+            "backgrounds": [
+                {
+                    "type": "gradient",
+                    "from": [
+                        30,
+                        30,
+                        30
+                    ],
+                    "to": [
+                        0,
+                        0,
+                        0
+                    ]
+                }
+            ],
+            "blocks": {
+                "backgroundColor": [
+                    0,
+                    0,
+                    0,
+                    0.08
+                ],
+                "borderRadius": 0,
+                "shadow": [
+                    2,
+                    2,
+                    2,
+                    [
+                        0,
+                        0,
+                        0,
+                        0.3
+                    ]
+                ],
+                "alignemnent": "right"
+            },
+            "title": {
+                "font": "default",
+                "size": 60,
+                "alignemnent": "right"
+            },
+            "navigation": {
+                "font": "default",
+                "size": "default",
+                "alignment": "right"
+            },
+            "error": {
+                "font": "AnonymousPro",
+                "size": 45,
+                "alignment": "center"
+            }
+        }
+    }
+}

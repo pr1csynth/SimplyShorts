@@ -1,5 +1,6 @@
 ## FILE : config.json
 This file contain default parameters for SimplyShorts.
+If this file is invalid or absent, or if some values are invalid or absent, `config.default.json`'s values will be used.
 
 **name** - *string*	Name of your Site
 
