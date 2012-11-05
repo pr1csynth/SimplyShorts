@@ -1,6 +1,7 @@
 {
     "ss": {
         "name": "SimplyShorts",
+        "debug":false,
         "online": true,
         "offlineMessage": "Houston, we have a problem.",
         "header": true,

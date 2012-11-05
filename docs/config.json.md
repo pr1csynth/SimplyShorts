@@ -4,9 +4,11 @@ If this file is invalid or absent, or if some values are invalid or absent, `con
 
 **name** - *string*	Name of your Site
 
-**offlineMessage** - *string*	Displayed in case of unknow error or in offline mode.
+**debug** - *boolean*	Enable or disable debug mode.
 
 **online** - *boolean*	If false, display the `offlineMessage`.
+
+**offlineMessage** - *string*	Displayed in case of unknow error or in offline mode.
 
 **header** - *boolean*	Put the header on the main page, or not.
 
