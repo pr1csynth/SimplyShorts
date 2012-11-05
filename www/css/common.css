@@ -40,10 +40,5 @@ section{
 
 article, header{
 	display: inline-block;
+	position: relative;
 }
-
-article{
-    position: relative;
-}
-
-
