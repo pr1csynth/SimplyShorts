@@ -27,11 +27,16 @@ class CSSComputer{
 		self::addProperty('html', 'text-align', $font->defaultAlignment);
 		self::addProperty('article, header', 'text-align', $font->defaultAlignment);
 
-		self::addProperty('article', 'line', $font->interline);
+		self::addProperty('article', 'line-height', $font->interline);
 		
 		self::addProperty('#background, html', 'background-color', self::tabToRGB($stylesSettings->style->backgroundColor));
 		
-		/*/ TODO Backgrounds /*/
+		$backgrounds = $stylesSettings->style->backgrounds;
+
+		if($backgrounds->gradientType == "linear"){
+			self::addProperty("#background","background","linear-gradient(top, ".self::tabToRGB($backgrounds->from).", ".self::tabToRGB($backgrounds->to).")",true,true);
+		}
+
 		
 		$block = $stylesSettings->style->blocks;
 
@@ -39,11 +44,19 @@ class CSSComputer{
 		$padding = $block->padding;
 		$oneUnit = $block->width; 		
 		$twoUnits = 2*($oneUnit+$padding+$margin);
+		$video2UHeight = $twoUnits*(9/16);
 		$threeUnits = 4*$margin+4*$padding+3*$oneUnit;
+		$video3UHeight = $threeUnits*(9/16);
 
 		$totalWidth = 3*(2*$margin+2*$padding+$oneUnit);
 
 		self::addProperty('section','width',$totalWidth."px");
+
+		self::addProperty('.u2.video iframe','width',$twoUnits."px");
+		self::addProperty('.u2.video iframe','height',$video2UHeight."px");
+
+		self::addProperty('.u3.video iframe','width',$threeUnits."px");
+		self::addProperty('.u3.video iframe','height',$video3UHeight."px");
 				
 		self::addProperty('article, header','background-color', self::tabToRGB($block->backgroundColor));
 		self::addProperty('article, header','border-radius', $block->borderRadius."px", true);

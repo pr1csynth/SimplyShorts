@@ -35,7 +35,8 @@ a:hover{
 }
 
 section{
-    margin: auto; 
+    margin: auto;
+    text-align: left; 
 }
 
 article, header{
