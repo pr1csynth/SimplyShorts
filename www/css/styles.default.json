@@ -1,5 +1,8 @@
 {
     "style": {
+        
+        "totalWidth": 630,
+
         "font": {
             "color": [
                 255,
@@ -54,7 +57,9 @@
                     0.3
                 ]
             ],
-            "alignemnent": "right"
+            "alignemnent": "right",
+            "margin": 5,
+            "padding": 10
         },
         "title": {
             "font": "default",
