@@ -6,6 +6,8 @@ If this file is invalid or absent, or if some values are invalid or absent, `con
 
 **font** - *object*	Font files must be in the dir `fonts`.
 
+>**interline** *decimal* Space between line in line (ie.: `1.3`).
+
 >**color** - *[int,int,int]* 	Text color, RGB - 0 to 255.
 
 >**linkColor** - *[int,int,int]* 	Links color, RGB - 0 to 255.
