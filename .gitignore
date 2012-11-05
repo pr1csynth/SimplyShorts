@@ -1,5 +1,5 @@
 old/*
 sftp-config.json
-www/config.json
-www/styles.json
+www/config/config.json
+www/config/styles.json
 www/.*

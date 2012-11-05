@@ -1,21 +1,4 @@
 {
     "ss": {
-        "name": "WIP",
-        "debug":true,
-        "maxBlocks": 0,
-        "displayName": "Antoine",
-        "generalPass": "password",
-
-        "db": {
-            "host": "",
-            "base": "peslerbepin",
-            "user": "peslerbepin",
-            "password": ""
-        },
-
-        "url": {
-            "basedir": "/",
-            "separator": "!"
-        }
     }
 }
