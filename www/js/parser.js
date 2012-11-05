@@ -50,7 +50,7 @@ function init(){
     
     blocks = document.getElementsByTagName('ARTICLE');
     header = document.getElementById('header');
-    //setTimeout(parseBlocks, 100);
+    setTimeout(parseBlocks, 100);
 }
 
 
