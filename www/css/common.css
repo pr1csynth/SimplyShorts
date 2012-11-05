@@ -18,11 +18,32 @@ html{
 }
 
 a{
-    cursor: pointer;
-    text-decoration: none;
-    border-bottom: 1px dotted;
+	cursor: pointer;
+	text-decoration: none;
+	border-bottom: 1px dotted;
 }
 
 a:hover{
 	border-bottom: 1px solid;
 }
+
+#background{
+	z-index: -1;
+	position: fixed;
+	height: 100%;
+	width: 100%;
+}
+
+section{
+    margin: auto; 
+}
+
+article, header{
+	display: inline-block;
+}
+
+article{
+    position: relative;
+}
+
+

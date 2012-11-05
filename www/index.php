@@ -6,7 +6,8 @@
         <meta name="description" content="Make it beautiful." />
         <meta name="keywords" content="" />
         <link rel="icon" type="image/png" href="favicon.png" />
-        <script type="text/javascript" src="parser.js"></script>
+        <link rel="stylesheet" media="screen" type="text/css" title="common" href="css/common.css" />
+        <script type="text/javascript" src="js/parser.js"></script>
 
         <title>CrystalShip</title>
     </head>
