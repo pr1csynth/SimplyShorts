@@ -6,6 +6,8 @@ If this file is invalid or absent, or if some values are invalid or absent, `con
 
 >**color** - *[int,int,int]* 	Text color, RGB - 0 to 255.
 
+>**linkColor** - *[int,int,int]* 	Links color, RGB - 0 to 255.
+
 >**defaultSans** - *string* 	The default Serif font, without the extension.
 
 >**defaultSerif** - *string* The default font type, must be `sans` or `serif`.

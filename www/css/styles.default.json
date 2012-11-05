@@ -2,10 +2,14 @@
     "style": {
         "font": {
             "color": [
-                248,
-                248,
-                248
+                255,
+                255,
+                255
             ],
+            "linkColor":[
+                240,
+                240,
+                240],
             "defaultSans": "QuaverSans",
             "defaultSerif": "QuaverSerif",
             "defaultStyle": "sans",
