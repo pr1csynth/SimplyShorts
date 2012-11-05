@@ -25,7 +25,8 @@ class CSSComputer{
 		self::addProperty('html', 'font-family', $font->$defaultFont);
 		self::addProperty('html', 'font-size', $font->defaultSize."px");
 		self::addProperty('html', 'text-align', $font->defaultAlignment);
-		
+		self::addProperty('article, header', 'text-align', $font->defaultAlignment);
+
 		self::addProperty('article', 'line', $font->interline);
 		
 		self::addProperty('#background, html', 'background-color', self::tabToRGB($stylesSettings->style->backgroundColor));
