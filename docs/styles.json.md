@@ -32,7 +32,7 @@ If this file is invalid or absent, or if some values are invalid or absent, `con
 
 >**position** - *string* For `image`, like `background-position` CSS property, default `center`.
 
->**attachment** - *string* For `image`, like `background-position` CSS property : `scroll` or `fixed`, default `fixed`.
+>**attachment** - *string* For `image`, like `background-attachment` CSS property : `scroll` or `fixed`, default `fixed`.
 
 **blocks** - *object* Style for blocks
 
