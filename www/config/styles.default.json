@@ -14,8 +14,9 @@
                 240],
             "defaultSans": "QuaverSans",
             "defaultSerif": "QuaverSerif",
-            "defaultStyle": "sans",
-            "defaultSize": 20
+            "defaultStyle": "Sans",
+            "defaultSize": 20,
+            "defaultAlignment": "right"
         },
 
         "backgroundColor": [
@@ -59,7 +60,7 @@
                     0.3
                 ]
             ],
-            "alignemnent": "right",
+            "alignment": "default",
             "width":180,
             "margin": 5,
             "padding": 10
@@ -68,13 +69,13 @@
         "title": {
             "font": "default",
             "size": 60,
-            "alignemnent": "right"
+            "alignment": "default"
         },
 
         "navigation": {
             "font": "default",
             "size": "default",
-            "alignment": "right"
+            "alignment": "default"
         },
 
         "footer":{
