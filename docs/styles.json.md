@@ -66,6 +66,10 @@ If this file is invalid or absent, or if some values are invalid or absent, `con
 
 >**alignment** - *string* Text alignment, must be `left`, `center` or `right`, default `right`.
 
+**Footer** - *object* Footer blocks.
+
+>**opacity** - *decimal* Opacity of this blocks.
+
 **error** - *object* Style fot the error block (3 units).
 
 >**font** - *string* Must be the font name or `default`.
