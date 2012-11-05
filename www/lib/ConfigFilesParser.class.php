@@ -1,8 +1,4 @@
 <?php
-
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
-
 class ConfigFileParser{
 
 	public static function parse($filePath){
@@ -39,7 +35,5 @@ class ConfigFileParser{
 		return $base;	
 	}
 }
-
-var_dump( ConfigFileParser::parse("../config/config") );
 
 ?>
