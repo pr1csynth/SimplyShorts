@@ -40,6 +40,6 @@ class ConfigFileParser{
 	}
 }
 
-var_dump( ConfigFileParser::parse("../../config/config") );
+var_dump( ConfigFileParser::parse("../config/config") );
 
 ?>
