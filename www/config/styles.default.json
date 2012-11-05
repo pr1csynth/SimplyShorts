@@ -19,11 +19,13 @@
             "defaultStyle": "sans",
             "defaultSize": 20
         },
+
         "backgroundColor": [
             20,
             20,
             20
         ],
+
         "backgrounds": [
             {
                 "type": "gradient",
@@ -39,6 +41,7 @@
                 ]
             }
         ],
+
         "blocks": {
             "backgroundColor": [
                 0,
@@ -62,16 +65,23 @@
             "margin": 5,
             "padding": 10
         },
+
         "title": {
             "font": "default",
             "size": 60,
             "alignemnent": "right"
         },
+
         "navigation": {
             "font": "default",
             "size": "default",
             "alignment": "right"
         },
+
+        "footer":{
+            "opacity": 0.2,
+        },
+
         "error": {
             "font": "AnonymousPro",
             "size": 45,
