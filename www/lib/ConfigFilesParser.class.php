@@ -1,5 +1,5 @@
 <?php
-class ConfigFileParser{
+class ConfigFilesParser{
 
 	public static function parse($filePath){
 		if(is_file($filePath.".json")){
@@ -16,7 +16,7 @@ class ConfigFileParser{
 			return self::patch($base, $patch);
 
 		}else{
-			trigger_error("File is unreachable.");
+			trigger_error("File ".$filePath.".json"." is unreachable.");
 			return;
 		}
 	}
