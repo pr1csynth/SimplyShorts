@@ -1,8 +1,6 @@
 {
     "style": {
 
-        "totalWidth": 630,
-
         "font": {
             "interline": 1.3,
             "color": [
@@ -62,6 +60,7 @@
                 ]
             ],
             "alignemnent": "right",
+            "width":180,
             "margin": 5,
             "padding": 10
         },

@@ -2,8 +2,6 @@
 This file customisation settings for SimplyShorts.
 If this file is invalid or absent, or if some values are invalid or absent, `config.default.json`'s values will be used.
 
-**totalWidth** - *int* Width of the site, in px.
-
 **font** - *object*	Font files must be in the dir `fonts`.
 
 >**interline** *decimal* Space between line in line (ie.: `1.3`).
@@ -45,6 +43,8 @@ If this file is invalid or absent, or if some values are invalid or absent, `con
 >**shadow** - *[int,int,int,[int,int,int,int]]* Shadow : x, y, radius, then RGB - 0 to 255 + alpha.
 
 >**alignment** - *string* Text alignment, must be `left`, `center` or `right`, default `right`.
+
+>**width** - *int* Width of one unit block, in px.
 
 >**margin** - *int* Space in px between blocks.
 
