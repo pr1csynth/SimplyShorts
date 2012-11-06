@@ -14,7 +14,7 @@ class CSSComputer{
 	private static $vendors = array("", "-webkit-", "-moz-", "-ms-", "-o-");
 
 	public static function genFont(){
-
+		return "";
 	}
 	
 	public static function genCustomisation($stylesSettings){
