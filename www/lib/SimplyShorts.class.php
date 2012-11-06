@@ -6,9 +6,11 @@ Main Program.
 
 class SimplyShorts{
 
-	private $pageComputer; 
+	private $page;
 	
 	public function __construct(){
+
+		$title = "";
 
 		try{
 			$config = ConfigFilesParser::parse("config/config");
@@ -22,14 +24,24 @@ class SimplyShorts{
 		if(DEBUG){
 			ini_set('display_errors', 1);
 			error_reporting(E_ALL);	
-			echo "◰";
+			$title = "◰";
 		}
 
+		// Testing
+		$this->page = new Page($title);
+
+		$this->page->addCSS('css/common.css');
+		$this->page->addCSS('css/custom.php');
+
+		$this->page->addBlocks(array(array(
+			'classes' => array('error'),
+			'content' => 'Coucou :3')
+		));
 
 	}
 
 	public function renderPage(){
-
+		echo $this->page->compute();
 	}
 
 	private function defineConstants($config){
