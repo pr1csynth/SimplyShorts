@@ -5,9 +5,6 @@
 Generate cascade style sheets.
 */
 
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
-
 header("Content-type: text/css");
 
 
@@ -15,6 +12,10 @@ class CSSComputer{
 
 	private static $CSSData = array();
 	private static $vendors = array("", "-webkit-", "-moz-", "-ms-", "-o-");
+
+	public static function genFont(){
+
+	}
 	
 	public static function genCustomisation($stylesSettings){
 
@@ -161,7 +162,4 @@ class CSSComputer{
 
 }
 
-require("ConfigFilesParser.class.php");
-
-echo CSSComputer::genCustomisation(ConfigFilesParser::parse('../config/styles'));
 ?>
