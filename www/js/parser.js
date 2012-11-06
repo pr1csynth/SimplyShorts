@@ -1,3 +1,8 @@
+/*
+## FILE : parser.js
+This javascript file setup blocks on each page to miminize space between blocks.
+*/
+
 var margin = 0;
 var blocksToSuppr = "";
 var blocks;

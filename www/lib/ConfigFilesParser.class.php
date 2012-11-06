@@ -1,4 +1,12 @@
 <?php
+
+/*
+## FILE configFileParser.class.php
+Parse config files and apply patchs.
+Usage : `$settings = ConfigFileParser::parse($configFilePath);`
+*/
+
+
 class ConfigFilesParser{
 
 	public static function parse($filePath){

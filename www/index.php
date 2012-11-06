@@ -1,3 +1,11 @@
+<?php
+/*
+## FILE : index.php
+Entry point. 
+At moment, it is a static page to test CSS generation. 
+*/
+?>
+
 <!DOCTYPE html>
 <html>
 
