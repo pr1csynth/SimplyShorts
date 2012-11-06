@@ -1,13 +1,4 @@
 {
     "style": {
-    	"font":{
-    		"color":[20,20,20]
-    	},
-    	"backgroundColor":[255,255,255],
-    	"blocks":{
-    		"width": 180,
-    		"shadow":[0,0,1,[0,0,0,1]],
-    		"backgroundColor":[0,0,0,0.02]
-    	}
     }
 }
