@@ -40,9 +40,9 @@ class CSSComputer{
 		$backgrounds = $stylesSettings->style->backgrounds;
 
 		if($backgrounds->gradientType == "linear"){
-			self::addProperty("#background","background","linear-gradient(top, ".self::tabToRGB($backgrounds->from).", ".self::tabToRGB($backgrounds->to).")",true,true);
+			self::addProperty("html","background","linear-gradient(top, ".self::tabToRGB($backgrounds->from).", ".self::tabToRGB($backgrounds->to).") no-repeat fixed",true,true);
 		}elseif ($backgrounds->gradientType == "radial") {
-			self::addProperty("#background","background","radial-gradient(50% 50%, circle cover, ".self::tabToRGB($backgrounds->from).", ".self::tabToRGB($backgrounds->to).")",true,true);
+			self::addProperty("html","background","radial-gradient(50% 50%, circle cover, ".self::tabToRGB($backgrounds->from).", ".self::tabToRGB($backgrounds->to).") no-repeat fixed",true,true);
 		}
 
 		if($backgrounds->raw != ""){
