@@ -82,7 +82,7 @@ class CSSComputer{
 		
 		self::addProperty('.u1, .u1 img','width', $oneUnit."px");
 		self::addProperty('.u2, .u2 img','width', $twoUnits."px");
-		self::addProperty('.u3, .u3 img, header','width', $threeUnits."px");
+		self::addProperty('.u3, .error, .u3 img, header','width', $threeUnits."px");
 
 		self::addProperty('header','margin-top','0px');
 		
