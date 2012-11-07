@@ -108,10 +108,18 @@ class Page{
 		}
 
 		foreach ($this->pinnedBlocks as $key => $block) {
-			$page .= $t
+			$page .= $this->blockDataToHTML($block);
 		}
 
-		$page .="\t\t</section>\n";
+		foreach ($this->classicBlocks as $key => $block) {
+			$page .= $this->blockDataToHTML($block);
+		}
+
+		foreach ($this->footerBlocks as $key => $block) {
+			$page .= $this->blockDataToHTML($block);
+		}
+
+		$page .="\n\t\t</section>\n";
 
 		$page .="\t</body>\n";
 		$page .="</html>";
@@ -141,14 +149,15 @@ class Page{
 		return "";
 	}
 	private function blockDataToHTML($blockData){
+		$html = '';
 		foreach ($blockData as $key => $block) {
-			$block = "<article class=' ";
+			$html .= "<article class=' ";
 			foreach ($block['classes'] as $key => $class) {
-				$block .= $class." ";
+				$html .= $class." ";
 			}
-			$block .= "' >".$block['content']."</article>";
-			return $block;
+			$html .= "' >".$block['content']."</article>";
 		}
+		return $html;
 	}
 
 }

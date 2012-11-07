@@ -24,8 +24,10 @@ class SimplyShorts{
 		if(DEBUG){
 			ini_set('display_errors', 1);
 			error_reporting(E_ALL);	
-			$title = "◰";
+			$title = "";
 		}
+
+		$title .= " Testing page";
 
 		// Testing
 		$this->page = new Page($title);
@@ -33,10 +35,109 @@ class SimplyShorts{
 		$this->page->addCSS('css/common.css');
 		$this->page->addCSS('css/custom.php');
 
-		$this->page->addBlocks(array(array(
-			'classes' => array('error'),
-			'content' => 'Coucou :3')
-		));
+		$this->page->addBlocks(array(
+			array(
+				'classes' => array('u2'),
+				'content' => 'Coucou :3'
+				),			array(
+				'classes' => array('u2'),
+				'content' => 'Coucou :3'
+				),			array(
+				'classes' => array('u2'),
+				'content' => 'Coucou :3'
+				),			array(
+				'classes' => array('u2'),
+				'content' => 'Coucou :3'
+				),			array(
+				'classes' => array('u2'),
+				'content' => 'Coucou :3'
+				),			array(
+				'classes' => array('u2'),
+				'content' => 'Coucou :3'
+				),			array(
+				'classes' => array('u2'),
+				'content' => 'Coucou :3'
+				),			array(
+				'classes' => array('u2'),
+				'content' => 'Coucou :3'
+				),			array(
+				'classes' => array('u2'),
+				'content' => 'Coucou :3'
+				),			array(
+				'classes' => array('u2'),
+				'content' => 'Coucou :3'
+				),			array(
+				'classes' => array('u2'),
+				'content' => 'Coucou :3'
+				),			array(
+				'classes' => array('u2'),
+				'content' => 'Coucou :3'
+				),			array(
+				'classes' => array('u2'),
+				'content' => 'Coucou :3'
+				),			array(
+				'classes' => array('u2'),
+				'content' => 'Coucou :3'
+				),			array(
+				'classes' => array('u2'),
+				'content' => 'Coucou :3'
+				),			array(
+				'classes' => array('u2'),
+				'content' => 'Coucou :3'
+				),			array(
+				'classes' => array('u2'),
+				'content' => 'Coucou :3'
+				),			array(
+				'classes' => array('u2'),
+				'content' => 'Coucou :3'
+				),			array(
+				'classes' => array('u2'),
+				'content' => 'Coucou :3'
+				),			array(
+				'classes' => array('u2'),
+				'content' => 'Coucou :3'
+				),			array(
+				'classes' => array('u2'),
+				'content' => 'Coucou :3'
+				),			array(
+				'classes' => array('u2'),
+				'content' => 'Coucou :3'
+				),			array(
+				'classes' => array('u2'),
+				'content' => 'Coucou :3'
+				),			array(
+				'classes' => array('u2'),
+				'content' => 'Coucou :3'
+				),			array(
+				'classes' => array('u2'),
+				'content' => 'Coucou :3'
+				),			array(
+				'classes' => array('u2'),
+				'content' => 'Coucou :3'
+				),			array(
+				'classes' => array('u2'),
+				'content' => 'Coucou :3'
+				),			array(
+				'classes' => array('u2'),
+				'content' => 'Coucou :3'
+				),			array(
+				'classes' => array('u2'),
+				'content' => 'Coucou :3'
+				),			array(
+				'classes' => array('u2'),
+				'content' => 'Coucou :3'
+				),			array(
+				'classes' => array('u2'),
+				'content' => 'Coucou :3'
+				),			array(
+				'classes' => array('u2'),
+				'content' => 'Coucou :3'
+				),
+			array(
+				'classes' => array('u1'),
+				'content' => 'Youhou youpi yiha tralala pouet !'
+				)
+			),"normal");
 
 	}
 
