@@ -41,7 +41,12 @@ class CSSComputer{
 
 		if($backgrounds->gradientType == "linear"){
 			self::addProperty("#background","background","linear-gradient(top, ".self::tabToRGB($backgrounds->from).", ".self::tabToRGB($backgrounds->to).")",true,true);
+		}elseif ($backgrounds->gradientType == "radial") {
+			self::addProperty("#background","background","radial-gradient(50% 50%, circle cover, ".self::tabToRGB($backgrounds->from).", ".self::tabToRGB($backgrounds->to).")",true,true);
 		}
+
+		if($backgrounds->raw != "")
+		self::addProperty('body','background',$backgrounds->raw);
 
 		
 		$block = $stylesSettings->style->blocks;
@@ -75,6 +80,8 @@ class CSSComputer{
 		self::addProperty('.u1, .u1 img','width', $oneUnit."px");
 		self::addProperty('.u2, .u2 img','width', $twoUnits."px");
 		self::addProperty('.u3, .u3 img, header','width', $threeUnits."px");
+
+		self::addProperty('header','margin-top','0px');
 		
 		$title = $stylesSettings->style->title;
 
