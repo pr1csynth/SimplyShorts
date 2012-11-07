@@ -12,27 +12,23 @@ If this file is invalid or absent, or if some values are invalid or absent, `con
 
 >**defaultSans** - *string* 	The default Serif font, without the extension.
 
->**defaultSerif** - *string* The default font type, must be `sans` or `serif`.
+>**defaultSerif** - *string* The default font type, must be `Sans` or `Serif`.
 
 >**defaultSize** - *int* The default size for texts in px.
+
+>**defaultAlignment** - *string* Default alignment, `right`, `left`, `center` or `justify`.
 
 **backgroundColor** - *[int,int,int]* Background color, fallback too, RGB - 0 to 255.
 
 **backgrounds** - *array of objects*	Backgrounds, can be empty.
 
->**type** - *string* Must be `gradient`, `radialGradient` once, and/or `image` as many times as desired.
+>**gradientType** - *string* 'linear', 'radial' or 'none'.
 
->**from** - *[int,int,int]* For `gradient` and `radialGradient`, the start color, RGB - 0 to 255.
+>**from** - *[int,int,int]* Starting color, RGB - 0 to 255.
 
->**to** - *[int,int,int]* For `gradient` and `radialGradient`, the end color, RGB - 0 to 255.
+>**to** - *[int,int,int]* Ending color, RGB - 0 to 255.
 
->**image** - *string* For `image`, filename of desired image, background files must be in `img/background`.
-
->**repeat** - *string* For `image`, like `background-repeat` CSS property, default `repeat`.
-
->**position** - *string* For `image`, like `background-position` CSS property, default `center`.
-
->**attachment** - *string* For `image`, like `background-attachment` CSS property : `scroll` or `fixed`, default `fixed`.
+>**raw** - *string* Pure CSS, directly inserted in `background` property.
 
 **blocks** - *object* Style for blocks
 
@@ -42,7 +38,7 @@ If this file is invalid or absent, or if some values are invalid or absent, `con
 
 >**shadow** - *[int,int,int,[int,int,int,int]]* Shadow : x, y, radius, then RGB - 0 to 255 + alpha.
 
->**alignment** - *string* Text alignment, must be `left`, `center` or `right`, default `right`.
+>**alignment** - *string* Alignment, `right`, `left`, `center` or `justify`.
 
 >**width** - *int* Width of one unit block, in px.
 
@@ -56,7 +52,7 @@ If this file is invalid or absent, or if some values are invalid or absent, `con
 
 >**size** - *int* Must be the size in px or `default`.
 
->**alignment** - *string* Text alignment, must be `left`, `center` or `right`, default `right`.
+>**alignment** - *string* Alignment, `right`, `left`, `center` or `justify`.
 
 **navigation** - *object* Style fot the navigation menu.
 
@@ -64,7 +60,7 @@ If this file is invalid or absent, or if some values are invalid or absent, `con
 
 >**size** - *int* Must be the size in px or `default`.
 
->**alignment** - *string* Text alignment, must be `left`, `center` or `right`, default `right`.
+>**alignment** - *string* Alignment, `right`, `left`, `center` or `justify`.
 
 **Footer** - *object* Footer blocks.
 
@@ -76,4 +72,4 @@ If this file is invalid or absent, or if some values are invalid or absent, `con
 
 >**size** - *int* Must be the size in px or `default`.
 
->**alignment** - *string* Text alignment, must be `left`, `center` or `right`, default `center`.
+>**alignment** - *string* Alignment, `right`, `left`, `center` or `justify`.

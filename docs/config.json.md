@@ -2,7 +2,9 @@
 This file contain default parameters for SimplyShorts.
 If this file is invalid or absent, or if some values are invalid or absent, `config.default.json`'s values will be used.
 
-**name** - *string*	Name of your Site
+**name** - *string*	Name of your Site.
+
+**description** - *string*	A short description of your site, showed in metas on each page.
 
 **debug** - *boolean*	Enable or disable debug mode.
 
@@ -14,7 +16,7 @@ If this file is invalid or absent, or if some values are invalid or absent, `con
 
 **navigation** - *boolean*	Put a navigation menu on the main page, require `header` to `true`.
 
-**maxBlocks** - *int*	Number of blocks displayed on the main page.
+**maxBlocks** - *int*	Number of blocks loaded at once.
 
 **displayName** - *string*	Your name.
 
@@ -22,7 +24,9 @@ If this file is invalid or absent, or if some values are invalid or absent, `con
 
 **generalPass** - *string*	General pass for general account, hashed at the next parsing (protect this file anyaway from public access).
 
-**db** - *object* Database settings, only support MySQL at the moment
+**db** - *object* Database settings.
+
+>**type** - *string* Only `mysql` right now.
 
 >**host** - *string* DB host.
 
@@ -35,6 +39,8 @@ If this file is invalid or absent, or if some values are invalid or absent, `con
 >**prefix** - *string* Table prefix.
 
 **url** - *object* URL settings
+
+>**urlRewrite** - *boolean* Indicate if you use url rewriting or not.
 
 >**basedir** - *string* Base directory of SimplyShort, at the root put `/`.
 
