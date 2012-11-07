@@ -45,8 +45,11 @@ class CSSComputer{
 			self::addProperty("#background","background","radial-gradient(50% 50%, circle cover, ".self::tabToRGB($backgrounds->from).", ".self::tabToRGB($backgrounds->to).")",true,true);
 		}
 
-		if($backgrounds->raw != "")
-		self::addProperty('body','background',$backgrounds->raw);
+		if($backgrounds->raw != ""){
+			self::addProperty('body','background',$backgrounds->raw);
+			if($backgrounds->size != "")
+				self::addProperty('body','background-size',$backgrounds->size);
+		}
 
 		
 		$block = $stylesSettings->style->blocks;
