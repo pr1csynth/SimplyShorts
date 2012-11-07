@@ -14,7 +14,34 @@ class CSSComputer{
 	private static $vendors = array("", "-webkit-", "-moz-", "-ms-", "-o-");
 
 	public static function genFont(){
-		return "";
+		$fontDir = '../fonts/';
+		$fontFiles = scandir($fontDir);
+		$fonts = array();
+
+		foreach ($fontFiles as $key => $fontFile) {
+			if(is_file($fontDir.$fontFile))
+			$fonts[substr($fontFile, 0, strrpos($fontFile, '.'))][] = substr($fontFile, strrpos($fontFile, '.')+1);	
+		}
+
+		$CSSText = "";
+
+		foreach ($fonts as $fontName => $fontFormats) {
+			$CSSText .= '@font-face{font-family:"'.$fontName.'"; src:';
+			$first = true;
+			foreach ($fontFormats as $key => $fontFormat) {
+			 		if($first){
+			 			$first = false;
+			 		}else{
+			 			$CSSText .= ",";
+			 		}
+
+			 		$CSSText .= "url('../fonts/".$fontName.".".$fontFormat."')";
+ 			 	} 
+ 			$CSSText .= ";}";
+ 			$CSSText .= ".".$fontName.'{font-family:"'.$fontName.'";}'."\n";	
+		}
+
+		return $CSSText;
 	}
 	
 	public static function genCustomisation($stylesSettings){

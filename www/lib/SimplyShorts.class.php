@@ -32,105 +32,19 @@ class SimplyShorts{
 		// Testing
 		$this->page = new Page($title);
 
+		$this->page->addCSS('css/fonts.php');
 		$this->page->addCSS('css/common.css');
 		$this->page->addCSS('css/custom.php');
 
 		$this->page->addBlocks(array(
 			array(
-				'classes' => array('u2'),
+				'classes' => array('error'),
 				'content' => 'Coucou :3'
 				),			array(
 				'classes' => array('u2'),
 				'content' => 'Coucou :3'
 				),			array(
-				'classes' => array('u2'),
-				'content' => 'Coucou :3'
-				),			array(
-				'classes' => array('u2'),
-				'content' => 'Coucou :3'
-				),			array(
-				'classes' => array('u2'),
-				'content' => 'Coucou :3'
-				),			array(
-				'classes' => array('u2'),
-				'content' => 'Coucou :3'
-				),			array(
-				'classes' => array('u2'),
-				'content' => 'Coucou :3'
-				),			array(
-				'classes' => array('u2'),
-				'content' => 'Coucou :3'
-				),			array(
-				'classes' => array('u2'),
-				'content' => 'Coucou :3'
-				),			array(
-				'classes' => array('u2'),
-				'content' => 'Coucou :3'
-				),			array(
-				'classes' => array('u2'),
-				'content' => 'Coucou :3'
-				),			array(
-				'classes' => array('u2'),
-				'content' => 'Coucou :3'
-				),			array(
-				'classes' => array('u2'),
-				'content' => 'Coucou :3'
-				),			array(
-				'classes' => array('u2'),
-				'content' => 'Coucou :3'
-				),			array(
-				'classes' => array('u2'),
-				'content' => 'Coucou :3'
-				),			array(
-				'classes' => array('u2'),
-				'content' => 'Coucou :3'
-				),			array(
-				'classes' => array('u2'),
-				'content' => 'Coucou :3'
-				),			array(
-				'classes' => array('u2'),
-				'content' => 'Coucou :3'
-				),			array(
-				'classes' => array('u2'),
-				'content' => 'Coucou :3'
-				),			array(
-				'classes' => array('u2'),
-				'content' => 'Coucou :3'
-				),			array(
-				'classes' => array('u2'),
-				'content' => 'Coucou :3'
-				),			array(
-				'classes' => array('u2'),
-				'content' => 'Coucou :3'
-				),			array(
-				'classes' => array('u2'),
-				'content' => 'Coucou :3'
-				),			array(
-				'classes' => array('u2'),
-				'content' => 'Coucou :3'
-				),			array(
-				'classes' => array('u2'),
-				'content' => 'Coucou :3'
-				),			array(
-				'classes' => array('u2'),
-				'content' => 'Coucou :3'
-				),			array(
-				'classes' => array('u2'),
-				'content' => 'Coucou :3'
-				),			array(
-				'classes' => array('u2'),
-				'content' => 'Coucou :3'
-				),			array(
-				'classes' => array('u2'),
-				'content' => 'Coucou :3'
-				),			array(
-				'classes' => array('u2'),
-				'content' => 'Coucou :3'
-				),			array(
-				'classes' => array('u2'),
-				'content' => 'Coucou :3'
-				),			array(
-				'classes' => array('u2'),
+				'classes' => array('u1'),
 				'content' => 'Coucou :3'
 				),
 			array(
