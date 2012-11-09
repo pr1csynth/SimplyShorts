@@ -24,7 +24,7 @@
         "url": {
             "urlRewrite": false,
             "basedir": "/",
-            "separator": "!"
+            "separator": ":"
         }
     }
 }
