@@ -26,9 +26,12 @@ class Page{
 
 	private $bodyScripts = array();
 
-	public function __construct($title){
-		$this->pageTitle = $title;
+	public function __construct(){
 		$this->addMeta(array('charset' => 'utf-8'));
+	}
+
+	public function setTitle($title){
+		$this->pageTitle = $title;
 	}
 
 	public function addCSS($filePath, $media = "screen"){
@@ -69,6 +72,12 @@ class Page{
 
 	public function displayError($message){
 		$this->addBlocks(array(array('classes' => array('error'),'content' => $message)));
+	}
+
+	public function gen404(){
+		$this->setTitle('404');
+		$this->addBlocks(array(array('classes' => array('u2'),'content' => "404")));
+		$this->addBlocks(array(array('classes' => array('u1'),'content' => "<a href='".BASEURL."'>Go back</a>")));
 	}
 
 	public function compute($header = true, $navigation = true){

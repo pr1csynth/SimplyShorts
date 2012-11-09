@@ -63,5 +63,11 @@ class DB{
 		return $param;
 	}
 
+	public function issetId($id)
+	{
+		# TODO :3
+		return false;
+	}
+
 }
 ?>
