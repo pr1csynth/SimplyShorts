@@ -84,7 +84,7 @@
 
         "error": {
             "font": "AnonymousPro",
-            "size": 45,
+            "size": 12,
             "alignment": "center"
         }
     }
