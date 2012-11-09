@@ -1,4 +1,13 @@
 {
-    "ss": {         
+    "ss": {  
+    	"debug":true,
+    	"name":"damn.",
+    	"displayName":"Antoine",
+    	"db":{
+    		"host":"mysql51-58.bdb",
+    		"base":"peslerbepin",
+    		"user":"peslerbepin",
+    		"password":"pt0530"
+    	}       
     }
 }

@@ -17,7 +17,8 @@
             "base": "simplyshorts",
             "user": "root",
             "password": "root",
-            "prefix": "sisho_"
+            "prefix": "sisho_",
+            "persitent": false
         },
 
         "url": {
