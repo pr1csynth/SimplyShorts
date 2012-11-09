@@ -73,7 +73,7 @@ class CSSComputer{
 		}
 
 		if($backgrounds->raw != ""){
-			self::addProperty('body','background',$backgrounds->raw);
+			self::addProperty('body','background',$backgrounds->raw,true,true,false);
 			if($backgrounds->size != "")
 				self::addProperty('body','background-size',$backgrounds->size);
 		}
@@ -157,11 +157,15 @@ class CSSComputer{
 		return $tab[0]."px ".$tab[1]."px ".$tab[2]."px ".self::tabToRGB($tab[3]);
   }
 
-	private static function addProperty($selector, $property, $value, $putVendors = false, $vendorOnValue = false){
+	private static function addProperty($selector, $property, $value, $putVendors = false, $vendorOnValue = false, $beforeValue = true){
 		if($putVendors){
 			foreach (self::$vendors as $i => $vendor) {
 				if($vendorOnValue){
-					self::addProperty($selector,$property,$vendor.$value);
+					if($beforeValue){
+						self::addProperty($selector,$property,$vendor.$value);
+					}else{
+						self::addProperty($selector,$property, str_replace("-vendor-", $vendor, $value));
+					}
 				}else{
 					self::addProperty($selector,$vendor.$property,$value);
 				}
