@@ -24,17 +24,24 @@ class SimplyShorts{
 		if(DEBUG){
 			ini_set('display_errors', 1);
 			error_reporting(E_ALL);	
-			$title = "";
+
 		}
 
-		$title .= " Testing page";
-
-		// Testing
+		$title = SITENAME;
 		$this->page = new Page($title);
-
 		$this->page->addCSS('css/fonts.php');
 		$this->page->addCSS('css/common.css');
 		$this->page->addCSS('css/custom.php');
+
+		try{
+			$db = new DB($config->ss->db);
+		}catch(Exception $e){
+			$this->page->addBlocks(array(array('classes' => array('error'),'content' => $e->getMessage())));
+			return;
+		}
+
+		// Testing
+
 
 		$this->page->addBlocks(array(
 			array(
