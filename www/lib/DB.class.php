@@ -33,9 +33,11 @@ class DB{
 	private function query($queryString, $params = array()){
 		try{
 			$query = $this->db->prepare($queryString);
+
 			foreach ($params as $key => $value) {
-				$query->bindParam(':'.$key, $value, $this->PDOTypeOf($value));
+				$query->bindValue(':'.$key, $value, $this->PDOTypeOf($value));
 			}
+
 			$query->execute();
 
 			$results = $query->fetchAll(PDO::FETCH_ASSOC);
@@ -65,8 +67,48 @@ class DB{
 
 	public function issetId($id)
 	{
-		# TODO :3
-		return false;
+		$results = $this->query('SELECT COUNT(*) AS count FROM '.$this->prefix."cat WHERE url = :url", array('url' => $id));
+		if($results[0]["count"] != 0){
+			return true;
+		}else{
+			$results = $this->query('SELECT COUNT(*) AS count FROM '.$this->prefix."blocks WHERE id = :id", array('id' => $id));	
+			if($results[0]["count"] != 0){
+				return true;
+			}else{
+				return false;
+			}
+		}
+	}
+
+	public function getIndexedBlocks(){
+		$blocks = $this->query('
+			SELECT 
+				b.id,
+				b.time,
+				b.unit,
+				b.typo,
+				b.size,
+				b.type,
+				b.content,
+				c.url
+			FROM
+				'.$this->prefix.'cat c
+			INNER JOIN 
+				'.$this->prefix.'blocks b
+			ON
+				b.cat = c.id
+			WHERE 
+				b.visible = 1 
+			AND
+				c.in_index = 1 
+			');
+
+		$blockData = array();
+
+		foreach ($blocks as $key => $block) {
+			$blockData[] = array("classes" => array("u".$block['unit'], "s".$block['size'], $block['typo'], $block['type']), "content" => $block['content']);	
+		}
+		return $blockData;
 	}
 
 }

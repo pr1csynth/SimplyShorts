@@ -16,6 +16,9 @@ class Page{
 
 	//BODY
 
+	private $header = true;
+	private $navigation = true;
+
 	private $navItems = array();
 
 	private $asideItems = array();
@@ -32,6 +35,15 @@ class Page{
 
 	public function setTitle($title){
 		$this->pageTitle = $title;
+	}
+
+	public function setHeader($header, $navigation){
+		$this->header = $header;
+		if($this->header){
+			$this->navigation = $navigation;
+		}else{
+			$navigation = false;
+		}
 	}
 
 	public function addCSS($filePath, $media = "screen"){
@@ -80,7 +92,7 @@ class Page{
 		$this->addBlocks(array(array('classes' => array('u1'),'content' => "<a href='".BASEURL."'>Go back</a>")));
 	}
 
-	public function compute($header = true, $navigation = true){
+	public function compute(){
 		$page = "<!DOCTYPE html>\n";
 		$page .= "<html>\n";
 		$page .= "\t<head>\n";
@@ -109,10 +121,10 @@ class Page{
 
 		$page .="\t\t<section>\n";
 
-		if($header){
+		if($this->header){
 			$page .="\t\t\t<header>";
 			$page .= $this->pageTitle;
-			if($navigation){
+			if($this->navigation){
 				$page .= "<nav>";
 				$page .= $this->navItemsToHTML($this->navItems);
 				$page .= "</nav>";

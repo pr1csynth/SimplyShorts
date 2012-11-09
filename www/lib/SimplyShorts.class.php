@@ -69,6 +69,7 @@ class SimplyShorts{
 		// Decision
 
 		if($identifiant == "index"){
+
 			switch ($action) {
 				case 'add':
 					# add cat gen
@@ -82,6 +83,9 @@ class SimplyShorts{
 				case 'view':
 				default:
 					# narmol page gen
+					$this->page->setHeader(AFFHEADER,AFFNAV);
+					$this->page->setTitle(SITENAME);
+					$this->page->addBlocks($this->db->getIndexedBlocks());
 					break;
 			}
 		}elseif($this->db->issetId($identifiant)) {
@@ -101,7 +105,8 @@ class SimplyShorts{
 					break;
 			}
 		}else{
-			$this->page->gen404(AFFHEADER,AFFNAV);
+			$this->page->setHeader(AFFHEADER,AFFNAV);
+			$this->page->gen404();
 		}
 
 	}
