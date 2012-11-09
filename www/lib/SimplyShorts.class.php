@@ -40,25 +40,6 @@ class SimplyShorts{
 			return;
 		}
 
-		// Testing
-
-
-		$this->page->addBlocks(array(
-			array(
-				'classes' => array('error'),
-				'content' => 'Coucou :3'
-				),			array(
-				'classes' => array('u2'),
-				'content' => 'Coucou :3'
-				),			array(
-				'classes' => array('u1'),
-				'content' => 'Coucou :3'
-				),
-			array(
-				'classes' => array('u1'),
-				'content' => 'Youhou youpi yiha tralala pouet !'
-				)
-			),"normal");
 
 	}
 
