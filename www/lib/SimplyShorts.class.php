@@ -36,7 +36,7 @@ class SimplyShorts{
 		try{
 			$db = new DB($config->ss->db);
 		}catch(Exception $e){
-			$this->page->addBlocks(array(array('classes' => array('error'),'content' => $e->getMessage())));
+			$this->page->displayError("DB error: ".$e->getMessage());
 			return;
 		}
 

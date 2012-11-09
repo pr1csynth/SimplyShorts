@@ -67,6 +67,10 @@ class Page{
 			$this->footerBlocks[] = $blocks;
 	}
 
+	public function displayError($message){
+		$this->addBlocks(array(array('classes' => array('error'),'content' => $message)));
+	}
+
 	public function compute($header = true, $navigation = true){
 		$page = "<!DOCTYPE html>\n";
 		$page .= "<html>\n";
