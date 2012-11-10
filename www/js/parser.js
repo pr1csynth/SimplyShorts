@@ -3,7 +3,6 @@
 This javascript file setup blocks on each page to miminize space between blocks.
 */
 
-var margin = 0;
 var blocksToSuppr = "";
 var blocks;
 var header;
@@ -11,13 +10,11 @@ var header;
 var debug = null;
 
 function parseBlocks(){
-
-    margin = header.offsetTop;
-    padding = 10;
     
     var index = [0,0,0];
     
-    index[0] = index[1] = index[2] = (2 * margin + header.offsetHeight);
+    if (header != null)
+      index[0] = index[1] = index[2] = (margin + header.offsetHeight);
     
     
     cc = 0;
@@ -52,7 +49,6 @@ function parseBlocks(){
 }
 
 function init(){
-    
     blocks = document.getElementsByTagName('ARTICLE');
     header = document.getElementById('header');
     setTimeout(parseBlocks, 100);

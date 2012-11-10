@@ -18,8 +18,10 @@ class Page{
 
 	private $header = true;
 	private $navigation = true;
+	private $headerClasses = array();
 
 	private $navItems = array();
+	private $current = 'index';
 
 	private $asideItems = array();
 
@@ -37,13 +39,20 @@ class Page{
 		$this->pageTitle = $title;
 	}
 
-	public function setHeader($header, $navigation){
+	public function setHeader($header, $navigation, $classes = array()){
 		$this->header = $header;
 		if($this->header){
 			$this->navigation = $navigation;
 		}else{
 			$navigation = false;
 		}
+
+		$this->headerClasses = $classes;
+	}
+
+	public function setMenu($items, $current){
+		$this->navItems = $items;
+		$this->current = $current;
 	}
 
 	public function addCSS($filePath, $media = "screen"){
@@ -65,7 +74,7 @@ class Page{
 			}else{
 				$type = "file";
 			}
-			$script = array("type" => $type);
+			$script = array("type" => $type, "js" => $js);
 			if($headScript){
 				$this->headScripts[] = $script;
 			}else{
@@ -108,12 +117,12 @@ class Page{
 
 		// Scripts
 		foreach ($this->headScripts as $key => $script) {
-			$page .= "\t\t".scriptData($script)."\n";
+			$page .= "\t\t".$this->scriptDataToHTML($script)."\n";
 		}
 
 		$page .="\t\t<title>".$this->pageTitle."</title>\n";
 		$page .="\t</head>\n";
-		$page .="\t<body>\n";
+		$page .="\t<body onload='init();'>\n";
 
 		$page .="\t\t<div id='background'></div>\n";
 
@@ -122,7 +131,11 @@ class Page{
 		$page .="\t\t<section>\n";
 
 		if($this->header){
-			$page .="\t\t\t<header>";
+			$page .="\t\t\t<header id='header' class='";
+			foreach ($this->headerClasses as $key => $class) {
+				$page .= $class." ";
+			}
+			$page .= "'>";
 			$page .= $this->pageTitle;
 			if($this->navigation){
 				$page .= "<nav>";
@@ -146,6 +159,11 @@ class Page{
 
 		$page .="\n\t\t</section>\n";
 
+		// Scripts
+		foreach ($this->headScripts as $key => $script) {
+			$page .= "\t\t".$this->scriptDataToHTML($script)."\n";
+		}
+
 		$page .="\t</body>\n";
 		$page .="</html>";
 
@@ -160,7 +178,7 @@ class Page{
 		$tag .= " >";
 		return $tag;	
 	}
-	private function scriptDataToHTML($scriptData){
+	private function scriptDataToHTML($script){
 		if($script["type"] == "inline"){
 			return "<script type='text/javascript'>".$script['js']."</script>";
 		}else{
@@ -171,7 +189,24 @@ class Page{
 
 	}
 	private function navItemsToHTML($navItems){
-		return "";
+		$nav = "";
+
+		foreach ($navItems as $key => $item) {
+			$class = "";
+			if($item['url'] == $this->current){
+				$class = "active"; 
+			}
+			$nav .= "<a class='".$class."' href='".BASEURL.$item['url']."'>".$item['name']."</a> - ";
+		}
+
+		if($this->current == "index"){
+			$nav .= "<a class='active' href='".BASEURL."'>".SITENAME."</a>";
+		}else{
+			$nav .= "<a href='".BASEURL."'>".SITENAME."</a>";
+		}
+
+
+		return $nav;
 	}
 	private function blockDataToHTML($blockData){
 		$html = '';

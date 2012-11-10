@@ -17,16 +17,20 @@ class SimplyShorts{
 
 		try{
 			$config = ConfigFilesParser::parse("config/config");
+			$styles = ConfigFilesParser::parse("config/styles");
 		}catch(Exception $e){
-			throw new Exception("Failed to parse config file: ".$e->getMessage(), 1,$e);
+			throw new Exception("Failed to parse config files: ".$e->getMessage(), 1,$e);
 			return;
 		}
 
-		self::defineConstants($config);
+		$this->defineConstants($config);
+
+		$blocksMetrics = CSSComputer::getMetrics($styles);
 
 		if(DEBUG){
 			ini_set('display_errors', 1);
 			error_reporting(E_ALL);	
+			//header("Content-type: text/txt");
 		}
 
 		// Create minimal page
@@ -36,6 +40,8 @@ class SimplyShorts{
 		$this->page->addCSS('css/fonts.php');
 		$this->page->addCSS('css/common.css');
 		$this->page->addCSS('css/custom.php');
+		$this->page->addScript('var margin = '.$blocksMetrics['margin'].'; var padding = '.$blocksMetrics['padding'].';');
+		$this->page->addScript('js/parser.js');
 
 		// Connect database
 
@@ -85,25 +91,55 @@ class SimplyShorts{
 					# narmol page gen
 					$this->page->setHeader(AFFHEADER,AFFNAV);
 					$this->page->setTitle(SITENAME);
-					$this->page->addBlocks($this->db->getIndexedBlocks());
+					$index = $this->db->getIndexedBlocks($skip, MAXBLOCKS);
+					if(AFFNAV)
+						$this->page->setMenu($this->db->getMenu(), 'index');
+					$this->page->addBlocks($index['blocks']);
 					break;
 			}
-		}elseif($this->db->issetId($identifiant)) {
-			switch ($action) {
-				case 'add':
-					# add cat gen
+		}elseif($type = $this->db->issetId($identifiant)) {
+			if($type == "cat"){
+				switch ($action) {
+					case 'add':
+						# add block gen
 					break;
-				case 'edit':
-					# edit site gen
+					case 'edit':
+						# edit cat gen
 					break;
-				case 'del':
-					# del cat gen 
+					case 'del':
+						# del cat gen 
 					break;
-				case 'view':
-				default:
-					# narmol page gen
+					case 'view':
+					default:
+					$cat = $this->db->getCat($identifiant, $skip, MAXBLOCKS);
+					$this->page->setHeader($cat['header'],$cat['nav'], $cat['classes']);
+					if($cat['nav'])
+						$this->page->setMenu($this->db->getMenu(), $identifiant);
+					$this->page->setTitle($cat['name']);
+					$this->page->addBlocks($cat['blocks']);
 					break;
+				}
+			}elseif ($type == "block") {
+					switch ($action) {
+					case 'edit':
+						# edit block gen
+					break;
+					case 'del':
+						# del block gen 
+					break;
+					case 'view':
+					default:
+					$block = $this->db->getBlock($identifiant);
+					$this->page->setHeader($block['header'],$block['nav'], $block['classes']);
+					if($block['nav'])
+						$this->page->setMenu($this->db->getMenu(), $identifiant);
+					$this->page->setTitle($block['name']);
+					$this->page->addBlocks($block['blocks']);
+					break;
+				}
 			}
+
+			
 		}else{
 			$this->page->setHeader(AFFHEADER,AFFNAV);
 			$this->page->gen404();
@@ -126,7 +162,7 @@ class SimplyShorts{
 
 		define('AFFHEADER', $ss->header);
 		define('AFFNAV',$ss->navigation);
-		define('AFFMAXBLOCKS', $ss->maxBlocks);
+		define('MAXBLOCKS', intval($ss->maxBlocks));
 		
 		define('DISPLAYNAME',$ss->displayName);
 

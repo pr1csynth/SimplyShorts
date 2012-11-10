@@ -5,9 +5,6 @@
 Generate cascade style sheets.
 */
 
-header("Content-type: text/css");
-
-
 class CSSComputer{
 
 	private static $CSSData = array();
@@ -43,6 +40,19 @@ class CSSComputer{
 
 		return $CSSText;
 	}
+
+	public static function getMetrics($stylesSettings){
+
+		$block = $stylesSettings->style->blocks;
+
+		$margin = $block->margin;
+		$padding = $block->padding;
+		$oneUnit = $block->width; 		
+
+		$totalWidth = 3*(2*$margin+2*$padding+$oneUnit);
+
+		return array("margin" => $margin, "padding" => $padding, "totalWidth" => $totalWidth);
+	}
 	
 	public static function genCustomisation($stylesSettings){
 
@@ -52,7 +62,7 @@ class CSSComputer{
 		self::addProperty('html', 'color', self::tabToRGB($font->color));
 		self::addProperty('a', 'color', self::tabToRGB($font->linkColor));
 		self::addProperty('a', 'border-color', self::tabToRGB($font->linkColor));
-		self::addProperty('a:hover', 'color', self::tabToRGB($font->color));
+		self::addProperty('a:hover, a.active', 'color', self::tabToRGB($font->color));
 		self::addProperty('a:hover', 'border-color', self::tabToRGB($font->color));
 		$defaultFont = "default".$font->defaultStyle;
 		self::addProperty('html', 'font-family', $font->$defaultFont);
@@ -125,12 +135,14 @@ class CSSComputer{
 		$nav = $stylesSettings->style->navigation;
 
 		if($nav->alignment != 'default')		
-		self::addProperty('navigation', 'text-align', $nav->alignement); 
+		self::addProperty('nav', 'text-align', $nav->alignement); 
 		if($nav->font != 'default')		
-		self::addProperty('navigation', 'font-family', $nav->font); 
+		self::addProperty('nav', 'font-family', $nav->font); 
 		if($nav->size != 'default')		
-		self::addProperty('navigation', 'font-size', $nav->size."px"); 	
-		
+		self::addProperty('nav', 'font-size', $nav->size."px"); 
+		else	
+		self::addProperty('nav', 'font-size', $font->defaultSize."px"); 
+
 		$error = $stylesSettings->style->error;
 
 		if($error->alignment != 'default')		

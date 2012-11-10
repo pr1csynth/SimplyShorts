@@ -69,18 +69,18 @@ class DB{
 	{
 		$results = $this->query('SELECT COUNT(*) AS count FROM '.$this->prefix."cat WHERE url = :url", array('url' => $id));
 		if($results[0]["count"] != 0){
-			return true;
+			return "cat";
 		}else{
-			$results = $this->query('SELECT COUNT(*) AS count FROM '.$this->prefix."blocks WHERE id = :id", array('id' => $id));	
+			$results = $this->query('SELECT COUNT(*) AS count FROM '.$this->prefix."blocks WHERE id = :id AND visible = 1", array('id' => $id));	
 			if($results[0]["count"] != 0){
-				return true;
+				return "block";
 			}else{
 				return false;
 			}
 		}
 	}
 
-	public function getIndexedBlocks(){
+	public function getIndexedBlocks($skip, $count){
 		$blocks = $this->query('
 			SELECT 
 				b.id,
@@ -100,15 +100,131 @@ class DB{
 			WHERE 
 				b.visible = 1 
 			AND
-				c.in_index = 1 
-			');
+				c.in_index = 1
+			LIMIT 
+				:skip,
+				:count
+			', array("skip" => $skip*$count, "count" => $count +1));
 
 		$blockData = array();
 
 		foreach ($blocks as $key => $block) {
 			$blockData[] = array("classes" => array("u".$block['unit'], "s".$block['size'], $block['typo'], $block['type']), "content" => $block['content']);	
 		}
-		return $blockData;
+
+		$blockData = array_reverse($blockData);
+
+		if($count == count($blockData)){
+			array_pop($blockData);
+			$isNextPage = true;
+		}else{
+			$isNextPage = false;
+		}
+
+		return array("blocks" => $blockData, "nextPage" => $isNextPage);
+	}
+
+	public function getCat($cat, $skip, $count){
+		$blocks = $this->query('
+			SELECT 
+				b.id,
+				b.time,
+				b.unit,
+				b.typo,
+				b.size,
+				b.type,
+				b.content,
+				c.header,
+				c.nav,
+				c.name,
+				c.typo title_typo,
+				c.size title_size,
+				c.time_sorted
+			FROM
+				'.$this->prefix.'blocks b
+			INNER JOIN
+				'.$this->prefix.'cat c				 
+			ON
+				b.cat = c.id
+			WHERE 
+				b.visible = 1 
+			AND
+				c.url = :cat
+			LIMIT 
+				:skip,
+				:count
+			', 
+			array("cat" => $cat, "skip" => $skip*$count, "count" => $count + 1));
+
+		$blockData = array();
+
+		foreach ($blocks as $key => $block) {
+			$blockData[] = array("classes" => array("u".$block['unit'], "s".$block['size'], $block['typo'], $block['type']), "content" => $block['content']);	
+		}
+
+		if($blocks[0]['time_sorted'])
+			$blockData = array_reverse($blockData);
+
+		if($count == count($blockData)){
+			array_pop($blockData);
+			$isNextPage = true;
+		}else{
+			$isNextPage = false;
+		}
+
+		return array("blocks" => $blockData, "header" => intval($blocks[0]['header']), "name" => $blocks[0]['name'], "nav" => intval($blocks[0]['nav']), "classes" => array("s".$blocks[0]['title_size'],$blocks[0]['title_typo']));
+	}
+
+	public function getBlock($id){
+		$blocks = $this->query('
+			SELECT 
+				b.id,
+				b.time,
+				b.unit,
+				b.typo,
+				b.size,
+				b.type,
+				b.content,
+				c.header,
+				c.nav,
+				c.name,
+				c.typo title_typo,
+				c.size title_size
+			FROM
+				'.$this->prefix.'blocks b
+			INNER JOIN
+				'.$this->prefix.'cat c				 
+			ON
+				b.cat = c.id
+			WHERE 
+				b.visible = 1 
+			AND
+				b.id = :id
+			', 
+			array("id" => $id));
+
+		$blockData = array();
+
+		foreach ($blocks as $key => $block) {
+			$blockData[] = array("classes" => array("u".$block['unit'], "s".$block['size'], $block['typo'], $block['type']), "content" => $block['content']);	
+		}
+
+		return array("blocks" => $blockData, "header" => intval($blocks[0]['header']), "name" => $blocks[0]['name'], "nav" => intval($blocks[0]['nav']), "classes" => array("s".$blocks[0]['title_size'],$blocks[0]['title_typo']));
+	}
+
+	public function getMenu(){
+		$items = $this->query('
+			SELECT
+				name,
+				url
+			FROM
+				'.$this->prefix.'cat
+			WHERE
+				in_nav = 1
+			');
+
+		return $items;
+
 	}
 
 }
